@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card-container card p-4">
+                <h2 class="text-center" id="form-title">{{ titulo }}</h2>
+                <form [formGroup]="formVenta" (ngSubmit)="agregarOEditar()">
+                    <div class="form-group">
+                        <label for="employeeId">ID del Empleado</label>
+                        <select class="form-control" id="employeeId" formControlName="idEmpleado" required>
+                            <option *ngFor="let empleado of empleados" [value]="empleado.idEmpleado">{{ empleado.idEmpleado }} - {{ empleado.nombreEmpleado }} {{empleado.apPaterno}} {{empleado.apMaterno}}</option>
+                        </select>
+                    </div>
+                        <button type="button" class="btn btn-danger" routerLink='/venta/listado-venta'>Cancelar</button>
+                        <button type="submit" class="btn btn-success" [disabled]="formVenta.invalid">Guardar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

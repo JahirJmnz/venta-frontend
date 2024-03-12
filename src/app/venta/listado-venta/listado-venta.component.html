@@ -1,0 +1,96 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="#">Tu App</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/empleado/listado-empleado">Empleados</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/producto/listado-producto">Productos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"  routerLink="/venta/listado-venta">Ventas</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-3 d-flex justify-content-between">
+  <h2>Listado de Ventas</h2>
+
+  <div>
+    <button class="btn btn-success btn-lg m-3" routerLink='/venta/registro-venta'>
+      <i class="fas fa-plus me-2"></i> Agregar Venta
+    </button>
+  </div>
+</div>
+
+  <div class="table-container">
+  <table class="table table-hover mt-4">
+    <thead class="table-dark">
+      <tr>
+        <th>FOLIO</th>
+        <th>Fecha Venta</th>
+        <th>Monto</th>
+        <th>ID Empleado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let venta of ventas">
+        <td>{{ venta.folio }}</td>
+        <td>{{ venta.fechaVenta }}</td>
+        <td>{{ venta.monto | currency }}</td>
+        <td>{{ venta.idEmpleado.idEmpleado }}</td>
+        <td>
+          <i class="fas fa-pen me-3 text-success" style="cursor: pointer;" (click)="editarVenta(venta.folio)"></i>
+          <i class="fas fa-trash-alt text-danger" style="cursor: pointer;" (click)="eliminarVenta(venta)"></i>
+        </td> 
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="container mt-3 d-flex justify-content-between">
+  <h2>Listado de Detalles de Venta</h2>
+
+  <div>
+    <button class="btn btn-success btn-lg m-3" routerLink='/venta/registro-detalle'>
+      <i class="fas fa-plus me-2"></i> Agregar Detalle de Venta
+    </button>
+  </div>
+</div>
+
+<div class="table-container">
+  <table class="table table-hover mt-4">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>FOLIO Venta</th>
+        <th>ID Producto</th>
+        <th>Cantidad</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let detalleVenta of detallesVenta">
+        <td>{{ detalleVenta.idDetalle }}</td>
+        <td>{{ detalleVenta.folio.folio }}</td>
+        <td>{{ detalleVenta.idProducto.idProducto }}</td>
+        <td>{{ detalleVenta.cantidad }}</td>
+        <td>
+          <i class="fas fa-pen me-3 text-success" style="cursor: pointer;" (click)="editarDetalle(detalleVenta.idDetalle)"></i>
+          <i class="fas fa-trash-alt me-3 text-danger" style="cursor: pointer;" (click)="eliminarDetalle(detalleVenta)"></i>
+
+          <i class="fas fa-file-pdf me-3 text-primary" style="cursor: pointer;" (click)="generarPDF(detalleVenta.idDetalle)"></i>
+          <i class="fab fa-js text-primary" style="cursor: pointer;" (click)="generarJSON(detalleVenta.idDetalle)"></i>
+        </td> 
+      </tr>
+    </tbody>
+  </table>
+</div>

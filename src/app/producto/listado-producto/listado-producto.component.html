@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="#">Tu App</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/empleado/listado-empleado">Empleados</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="cursor: pointer;">Productos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/venta/listado-venta">Ventas</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-3 d-flex justify-content-between">
+  <h2>Listado de Productos</h2>
+
+  <div>
+    <button class="btn btn-success btn-lg m-3" routerLink='/producto/registro-producto'>
+      <i class="fas fa-plus me-2"></i> Agregar Producto
+    </button>
+  </div>
+</div>
+
+<div class="table-container">
+  <table class="table table-hover mt-4">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Precio</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let producto of productos">
+        <td>{{ producto.idProducto }}</td>
+        <td>{{ producto.nombreProducto }}</td>
+        <td>{{ producto.descripcion }}</td>
+        <td>{{ producto.precio | currency }}</td>
+        <td>
+          <i class="fas fa-pen me-3 text-success" style="cursor: pointer;" (click)="editarProducto(producto.idProducto)"></i>
+          <i class="fas fa-trash-alt text-danger" style="cursor: pointer;" (click)="eliminar(producto)"></i>
+        </td>       
+      </tr>
+    </tbody>
+  </table>
+</div>

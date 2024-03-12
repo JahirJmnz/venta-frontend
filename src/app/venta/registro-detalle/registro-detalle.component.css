@@ -1,0 +1,28 @@
+.container {
+    padding-top: 50px;
+}
+.form-group {
+    margin-bottom: 20px;
+}
+.btn-danger, .btn-success {
+    margin-top: 20px;
+}
+.btn-danger {
+    margin-right: 10px;
+}
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+.card-container {
+    border: 1px solid #ddd; /* Borde del contenedor */
+    border-radius: 15px; /* Bordes más redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+    padding: 20px; /* Espaciado interno */
+    margin-bottom: 20px; /* Margen inferior */
+}

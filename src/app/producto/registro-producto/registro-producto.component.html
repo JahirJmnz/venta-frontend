@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card-container card p-4">
+                <h2 class="text-center" id="form-title">{{ titulo }}</h2>
+                <form [formGroup]="formProducto" (ngSubmit)="agregarOEditar()" class="needs-validation" novalidate>
+                    <div class="form-group">
+                        <label for="productName">Nombre del Producto</label>
+                        <input type="text" class="form-control" id="productName" formControlName="nombreProducto" (input)="onInputProducto($event)" required>
+                        <div class="invalid-feedback">
+                            Por favor, ingresa el nombre del producto.
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="productDescription">Descripción del Producto</label>
+                        <textarea class="form-control" id="productDescription" formControlName="descripcion" rows="3" required></textarea>
+                        <div class="invalid-feedback">
+                            Por favor, ingresa la descripción del producto.
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="productPrice">Precio del Producto</label>
+                        <div class="input-group">
+                            <span class="input-group-text">$</span>
+                            <input type="number" class="form-control" id="productPrice" formControlName="precio" required>
+                            <div class="invalid-feedback">
+                                Por favor, ingresa el precio del producto.
+                            </div>
+                        </div>
+                    </div>
+                        <button type="button" class="btn btn-danger" routerLink='/producto/listado-producto'>Cancelar</button>
+                        <button type="submit" class="btn btn-success" [disabled]="formProducto.invalid">Guardar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

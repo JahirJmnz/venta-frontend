@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card-container card p-4">
+                <h2 class="text-center" id="form-title">{{ titulo }}</h2>
+                <form [formGroup]="formDetalle" (ngSubmit)="agregarOEditar()">
+                    <div class="form-group">
+                        <label for="folio">Folio de Venta</label>
+                        <select class="form-control" id="folio" formControlName="folio" required>
+                            <option *ngFor="let venta of ventas" [value]="venta.folio">{{ venta.folio }} - {{venta.fechaVenta}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="idProducto">ID del Producto</label>
+                        <select class="form-control" id="idProducto" formControlName="idProducto" required>
+                            <option *ngFor="let producto of productos" [value]="producto.idProducto">{{ producto.idProducto }} - {{producto.nombreProducto}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="cantidad">Cantidad</label>
+                        <input type="number" class="form-control" id="cantidad" formControlName="cantidad" required>
+                    </div>
+                        <button type="button" class="btn btn-danger" routerLink='/venta/listado-venta'>Cancelar</button>
+                        <button type="submit" class="btn btn-success" [disabled]="formDetalle.invalid">Guardar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
