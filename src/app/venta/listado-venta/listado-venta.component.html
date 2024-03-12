@@ -48,8 +48,8 @@
         <td>{{ venta.monto | currency }}</td>
         <td>{{ venta.idEmpleado.idEmpleado }}</td>
         <td>
-          <i class="fas fa-pen me-3 text-success" style="cursor: pointer;" (click)="editarVenta(venta.folio)"></i>
-          <i class="fas fa-trash-alt text-danger" style="cursor: pointer;" (click)="eliminarVenta(venta)"></i>
+          <i class="fas fa-pen fa-lg me-3 text-success" style="cursor: pointer;" (click)="editarVenta(venta.folio)"></i>
+          <i class="fas fa-trash-alt fa-lg text-danger" style="cursor: pointer;" (click)="eliminarVenta(venta)"></i>
         </td> 
       </tr>
     </tbody>
@@ -84,11 +84,11 @@
         <td>{{ detalleVenta.idProducto.idProducto }}</td>
         <td>{{ detalleVenta.cantidad }}</td>
         <td>
-          <i class="fas fa-pen me-3 text-success" style="cursor: pointer;" (click)="editarDetalle(detalleVenta.idDetalle)"></i>
-          <i class="fas fa-trash-alt me-3 text-danger" style="cursor: pointer;" (click)="eliminarDetalle(detalleVenta)"></i>
+          <i class="fas fa-pen fa-lg me-3 text-success" style="cursor: pointer;" (click)="editarDetalle(detalleVenta.idDetalle)"></i>
+          <i class="fas fa-trash-alt fa-lg me-3 text-danger" style="cursor: pointer;" (click)="eliminarDetalle(detalleVenta)"></i>
 
-          <i class="fas fa-file-pdf me-3 text-primary" style="cursor: pointer;" (click)="generarPDF(detalleVenta.idDetalle)"></i>
-          <i class="fab fa-js text-primary" style="cursor: pointer;" (click)="generarJSON(detalleVenta.idDetalle)"></i>
+          <i class="fas fa-file-pdf fa-lg me-3 text-primary" style="cursor: pointer;" (click)="generarPDF(detalleVenta.idDetalle)"></i>
+          <i class="fab fa-js fa-lg text-primary" style="cursor: pointer;" (click)="generarJSON(detalleVenta.idDetalle)"></i>
         </td> 
       </tr>
     </tbody>
