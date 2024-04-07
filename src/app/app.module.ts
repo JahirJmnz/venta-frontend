@@ -14,6 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegistroDetalleComponent } from './venta/registro-detalle/registro-detalle.component';
+import { LoginComponent } from './login/login.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { RegistroDetalleComponent } from './venta/registro-detalle/registro-deta
     RegistroVentaComponent,
     ListadoVentaComponent,
     RegistroDetalleComponent,
+    LoginComponent,
+    SidebarComponent,
     
   ],
   imports: [

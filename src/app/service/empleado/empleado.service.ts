@@ -11,24 +11,32 @@ export class EmpleadoService {
   constructor(private http: HttpClient) { }
 
   obtenerTodosLosEmpleados(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
+    return this.http.get<any[]>(this.apiUrl, this.getHttpOptions());
   }
 
   buscarEmpleadoId(id: number): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/${id}`);
+    return this.http.get<any>(`${this.apiUrl}/${id}`, this.getHttpOptions());
   }
 
   agregarEmpleado(empleado: any): Observable<any> {
-    return this.http.post<any>(this.apiUrl, empleado);
+    return this.http.post<any>(this.apiUrl, empleado, this.getHttpOptions());
   }
 
   actualizarEmpleado(id: number, empleado: any): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/${id}`, empleado);
+    return this.http.put<any>(`${this.apiUrl}/${id}`, empleado, this.getHttpOptions());
   }
 
   eliminarEmpleado(id: number): Observable<any> {
-    return this.http.delete<any>(`${this.apiUrl}/${id}`);
+    return this.http.delete<any>(`${this.apiUrl}/${id}`, this.getHttpOptions());
   }
-  
-  
+
+  private getHttpOptions() {
+    const token = localStorage.getItem('token');
+    return {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      })
+    };
+  }
 }

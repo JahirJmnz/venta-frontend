@@ -14,15 +14,15 @@ export class VentaService {
   // Operaciones para Venta
 
   obtenerTodasLasVentas(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
+    return this.http.get<any[]>(this.apiUrl, this.getHttpOptions());
   }
 
   buscarVentaId(id: number): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/${id}`);
+    return this.http.get<any>(`${this.apiUrl}/${id}`, this.getHttpOptions());
   }
 
   agregarVenta(venta: any): Observable<any> {
-    return this.http.post<any>(this.apiUrl, venta);
+    return this.http.post<any>(this.apiUrl, venta, this.getHttpOptions());
   }
 
   actualizarVenta(id: number, venta: any): Observable<any> {
@@ -31,26 +31,26 @@ export class VentaService {
       // Agrega más campos según sea necesario (fecha, monto, etc.)
     };
   
-    return this.http.put<any>(`${this.apiUrl}/${id}`, body);
+    return this.http.put<any>(`${this.apiUrl}/${id}`, body, this.getHttpOptions());
   }
   
 
   eliminarVenta(id: number): Observable<any> {
-    return this.http.delete<any>(`${this.apiUrl}/${id}`);
+    return this.http.delete<any>(`${this.apiUrl}/${id}`, this.getHttpOptions());
   }
 
   // Operaciones para DetalleVenta
 
   obtenerTodosLosDetalles(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrlDetalleVenta);
+    return this.http.get<any[]>(this.apiUrlDetalleVenta, this.getHttpOptions());
   }
 
   buscarDetalleId(id: number): Observable<any> {
-    return this.http.get<any>(`${this.apiUrlDetalleVenta}/${id}`);
+    return this.http.get<any>(`${this.apiUrlDetalleVenta}/${id}`, this.getHttpOptions());
   }
 
   agregarDetalle(detalleVenta: any): Observable<any> {
-    return this.http.post<any>(this.apiUrlDetalleVenta, detalleVenta);
+    return this.http.post<any>(this.apiUrlDetalleVenta, detalleVenta, this.getHttpOptions());
   }
 
 
@@ -62,9 +62,20 @@ export class VentaService {
         cantidad: detalleVenta.cantidad,
     };
 
-    return this.http.put<any>(`${this.apiUrlDetalleVenta}/${id}`, body);
-}
+    return this.http.put<any>(`${this.apiUrlDetalleVenta}/${id}`, body, this.getHttpOptions());
+  }
+
   eliminarDetalle(id: number): Observable<any> {
-    return this.http.delete<any>(`${this.apiUrlDetalleVenta}/${id}`);
+    return this.http.delete<any>(`${this.apiUrlDetalleVenta}/${id}`, this.getHttpOptions());
+  }
+
+  private getHttpOptions() {
+    const token = localStorage.getItem('token');
+    return {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      })
+    };
   }
 }
