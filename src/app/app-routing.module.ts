@@ -16,6 +16,8 @@ import { RegistroDetalleComponent } from './venta/registro-detalle/registro-deta
 import { LoginComponent } from './login/login.component';
 
 import { AuthGuard } from './auth.guard';
+import { RegisterComponent } from './register/register.component';
+import { AdminGuard } from './admin.guard';
 
 const routes: Routes = [
   {
@@ -26,6 +28,11 @@ const routes: Routes = [
     path: '',
     redirectTo: 'login',
     pathMatch: 'full'
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
+    canActivate: [AdminGuard]
   },
   // Home
   {

@@ -1,0 +1,65 @@
+<div class="flex flex-col justify-center items-center min-h-screen mb-10">
+    <div class="w-full max-w-md mt-7 bg-white border border-gray-200 rounded-xl shadow-sm">
+      <div class="p-4 sm:p-7">
+        <div class="text-center">
+          <h1 class="block text-2xl font-bold text-gray-800">Registro de usuario</h1>
+        </div>
+  
+        <div class="py-3 flex items-center text-xs text-gray-400 uppercase before:flex-1 before:border-t before:border-gray-200 after:flex-1 after:border-t after:border-gray-200 mb-2 mt-2"></div>
+  
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <div class="grid gap-y-4">
+            <div>
+              <label for="firstName" class="block text-sm mb-2">Nombre</label>
+              <div class="relative">
+                <input id="firstName" type="text" formControlName="firstName" class="py-3 px-4 block w-full border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="First Name" required (keypress)="onlyLetters($event)">
+              </div>
+            </div>
+  
+            <div>
+              <label for="lastName" class="block text-sm mb-2">Apellido</label>
+              <div class="relative">
+                <input id="lastName" type="text" formControlName="lastName" class="py-3 px-4 block w-full border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="Last Name" required (keypress)="onlyLetters($event)">
+              </div>
+            </div>
+  
+            <div>
+              <label for="email" class="block text-sm mb-2">Correo</label>
+              <div class="relative">
+                <input id="email" type="email" formControlName="email" class="py-3 px-4 block w-full border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="Email" required (keypress)="validateEmail($event)">
+              </div>
+            </div>
+  
+            <div class="">
+                <label for="password" class="block text-sm mb-2">Contraseña:</label>
+                <input type="password" id="password" formControlName="password" class="py-3 px-4 block w-full border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="Contraseña" required (keypress)="validatePassword($event)">
+                <div *ngIf="registerForm.get('password')?.errors?.['minlength']" class="text-red-500 text-xs italic mt-2">
+                  La contraseña debe tener al menos 8 caracteres
+                </div>
+            </div>
+  
+            <div class="">
+                <label for="confirmPassword" class="block text-sm mb-2">Confirmar contraseña:</label>
+                <input type="password" id="confirmPassword" formControlName="confirmPassword" class="py-3 px-4 block w-full border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="Confirmar contraseña" required>
+                <div *ngIf="registerForm.errors?.['notSame']" class="text-red-500 text-xs italic mt-2">
+                  Las contraseñas no coinciden.
+                </div>
+            </div>
+  
+            <div class="mb-4">
+                <label for="role" class="block text-sm mb-2">Rol</label>
+                <div class="relative">
+                  <select id="role" formControlName="role" class="py-3 px-4 block w-full border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" required>
+                    <option value="">Selecciona un rol</option>
+                    <option value="USER">Usuario</option>
+                    <option value="ADMIN">Administrador</option>
+                  </select>
+                </div>
+              </div>
+  
+            <button type="submit" [disabled]="!registerForm.valid" class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">Registrar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

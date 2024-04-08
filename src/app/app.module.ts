@@ -16,6 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RegistroDetalleComponent } from './venta/registro-detalle/registro-detalle.component';
 import { LoginComponent } from './login/login.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     RegistroDetalleComponent,
     LoginComponent,
     SidebarComponent,
+    RegisterComponent,
     
   ],
   imports: [
